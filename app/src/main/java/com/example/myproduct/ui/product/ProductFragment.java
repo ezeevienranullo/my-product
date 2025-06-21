@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.myproduct.databinding.FragmentProductBinding;
@@ -38,7 +40,19 @@ public class ProductFragment extends Fragment {
                 products -> productAdapter.setProductList(products));
 
         productViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
-            // You can show/hide a progress bar here
+            if (isLoading) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+                binding.rcProducts.setVisibility(View.GONE);
+            } else {
+                binding.progressBar.setVisibility(View.GONE);
+                binding.rcProducts.setVisibility(View.VISIBLE);
+            }
+        });
+
+        productAdapter.setOnProductClickListener(product -> {
+            NavDirections action = ProductFragmentDirections
+                    .actionNavigationProductToProductDetailsFragment(product);
+            NavHostFragment.findNavController(this).navigate(action);
         });
 
         productViewModel.getErrorMessage().observe(getViewLifecycleOwner(), msg -> {

@@ -19,6 +19,15 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> productList = new ArrayList<>();
+    private OnProductClickListener listener;
+
+    public interface OnProductClickListener {
+        void onProductClick(Product product);
+    }
+
+    public void setOnProductClickListener(OnProductClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setProductList(List<Product> products) {
         this.productList = products;
@@ -35,7 +44,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvRating = itemView.findViewById(R.id.tvRating);
             ivProductImage = itemView.findViewById(R.id.ivProductImage);
-
         }
     }
 
@@ -49,15 +57,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        holder.tvTitle.setText(productList.get(position).getTitle());
-        holder.tvPrice.setText("₱ "+productList.get(position).getPrice()+"");
-        holder.tvRating.setText("★ "+productList.get(position).getRating()+"");
+        Product product = productList.get(position);
+
+        holder.tvTitle.setText(product.getTitle());
+        holder.tvPrice.setText("₱ "+product.getPrice());
+        holder.tvRating.setText("★ "+product.getRating());
 
         Glide.with(holder.itemView.getContext())
-                .load(productList.get(position).getThumbnail())
+                .load(product.getThumbnail())
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_error)
                 .into(holder.ivProductImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onProductClick(product);
+            }
+        });
     }
 
     @Override

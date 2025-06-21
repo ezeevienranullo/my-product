@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
@@ -51,4 +52,6 @@ dependencies {
     implementation(libs.gson)
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
+    implementation(libs.navigation.fragment.ktx)
+    implementation(libs.navigation.ui.ktx)
 }

@@ -9,11 +9,24 @@
         android:id="@+id/navigation_product"
         android:name="com.example.myproduct.ui.product.ProductFragment"
         android:label="@string/title_product"
-        tools:layout="@layout/fragment_product" />
-
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_navigation_product_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_recipe"
         android:name="com.example.myproduct.ui.recipe.RecipeFragment"
         android:label="@string/title_recipe"
         tools:layout="@layout/fragment_recipe" />
+
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.myproduct.ui.product_details.ProductDetailsFragment"
+        android:label="Product Details"
+        tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="product"
+            app:argType="com.example.myproduct.model.Product" />
+    </fragment>
 </navigation>
