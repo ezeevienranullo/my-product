@@ -5,21 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.home.HomeFragment">
-
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="viewStart"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    tools:context=".ui.product.ProductFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcProducts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingBottom="50dip" />
 </LinearLayout>

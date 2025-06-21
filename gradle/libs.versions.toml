@@ -27,6 +27,8 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+glide = { module = "com.github.bumptech.glide:glide", version = "4.16.0" }
+glide-compiler = { module = "com.github.bumptech.glide:compiler", version = "4.16.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

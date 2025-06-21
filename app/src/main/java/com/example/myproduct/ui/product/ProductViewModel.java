@@ -1,4 +1,4 @@
-package com.example.myproduct.ui.home;
+package com.example.myproduct.ui.product;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -15,20 +15,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeViewModel extends ViewModel {
+public class ProductViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
     private final MutableLiveData<List<Product>> productList = new MutableLiveData<>();
     private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>("My Products");
+    public ProductViewModel() {
         fetchProducts(); // optional: auto-fetch on init
-    }
-
-    public LiveData<String> getText() {
-        return mText;
     }
 
     public LiveData<List<Product>> getProductList() {
