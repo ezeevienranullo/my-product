@@ -2,5 +2,6 @@
     <string name="app_name">My Product</string>
     <string name="title_product">Product</string>
     <string name="title_recipe">Recipe</string>
+    <string name="str_cuisine">Cuisine:</string>
     <string name="title_notifications">Notifications</string>
 </resources>

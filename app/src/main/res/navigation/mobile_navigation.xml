@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_recipe"
-        android:name="com.example.myproduct.ui.dashboard.RecipeFragment"
+        android:name="com.example.myproduct.ui.recipe.RecipeFragment"
         android:label="@string/title_recipe"
         tools:layout="@layout/fragment_recipe" />
 </navigation>
