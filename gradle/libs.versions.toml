@@ -31,6 +31,7 @@ glide = { module = "com.github.bumptech.glide:glide", version = "4.16.0" }
 glide-compiler = { module = "com.github.bumptech.glide:compiler", version = "4.16.0" }
 navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version = "2.7.7" }
 navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version = "2.7.7" }
+viewpager2 = { module = "androidx.viewpager2:viewpager2", version = "1.0.0" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

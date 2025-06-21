@@ -9,11 +9,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.myproduct.databinding.FragmentRecipeBinding;
 import com.example.myproduct.ui.adapter.ProductAdapter;
 import com.example.myproduct.ui.adapter.RecipeAdapter;
+import com.example.myproduct.ui.product.ProductFragmentDirections;
 import com.example.myproduct.ui.product.ProductViewModel;
 
 public class RecipeFragment extends Fragment {
@@ -41,7 +44,19 @@ public class RecipeFragment extends Fragment {
                 products -> recipeAdapter.setProductList(products));
 
         recipeViewModel.getIsLoading().observe(getViewLifecycleOwner(), isLoading -> {
-            // You can show/hide a progress bar here
+            if (isLoading) {
+                binding.progressBar.setVisibility(View.VISIBLE);
+                binding.rcRecipes.setVisibility(View.GONE);
+            } else {
+                binding.progressBar.setVisibility(View.GONE);
+                binding.rcRecipes.setVisibility(View.VISIBLE);
+            }
+        });
+
+        recipeAdapter.setOnRecipeClickListener(recipe -> {
+            NavDirections action = RecipeFragmentDirections
+                    .actionNavigationRecipeToRecipeDetailsFragment(recipe);
+            NavHostFragment.findNavController(this).navigate(action);
         });
 
         recipeViewModel.getErrorMessage().observe(getViewLifecycleOwner(), msg -> {

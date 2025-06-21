@@ -3,6 +3,7 @@
     <string name="title_product">Product</string>
     <string name="title_recipe">Recipe</string>
     <string name="str_cuisine">Cuisine:</string>
+    <string name="str_difficulty">Difficulty:</string>
     <string name="str_stock">Stock: </string>
     <string name="str_discount">Discount %: </string>">
 </resources>

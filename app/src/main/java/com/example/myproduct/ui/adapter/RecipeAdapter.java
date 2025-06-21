@@ -18,6 +18,15 @@ import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
     private List<Recipe> recipeList = new ArrayList<>();
+    private OnRecipeClickListener listener;
+
+    public interface OnRecipeClickListener {
+        void onRecipeClick(Recipe recipe);
+    }
+
+    public void setOnRecipeClickListener(OnRecipeClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setProductList(List<Recipe> recipes) {
         this.recipeList = recipes;
@@ -48,15 +57,23 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
 
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
-        holder.tvTitle.setText(recipeList.get(position).getName());
-        holder.tvCuisine.setText(recipeList.get(position).getCuisine());
-        holder.tvRating.setText("★ "+recipeList.get(position).getRating()+"");
+        Recipe recipe = recipeList.get(position);
+
+        holder.tvTitle.setText(recipe.getName());
+        holder.tvCuisine.setText(recipe.getCuisine());
+        holder.tvRating.setText("★ "+recipe.getRating()+"");
 
         Glide.with(holder.itemView.getContext())
                 .load(recipeList.get(position).getImage())
                 .placeholder(R.drawable.ic_placeholder)
                 .error(R.drawable.ic_error)
                 .into(holder.ivProductImage);
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onRecipeClick(recipe);
+            }
+        });
     }
 
     @Override

@@ -18,7 +18,11 @@
         android:id="@+id/navigation_recipe"
         android:name="com.example.myproduct.ui.recipe.RecipeFragment"
         android:label="@string/title_recipe"
-        tools:layout="@layout/fragment_recipe" />
+        tools:layout="@layout/fragment_recipe" >
+        <action
+            android:id="@+id/action_navigation_recipe_to_recipeDetailsFragment"
+            app:destination="@id/recipeDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/productDetailsFragment"
@@ -29,4 +33,13 @@
             android:name="product"
             app:argType="com.example.myproduct.model.Product" />
     </fragment>
+    <fragment
+        android:id="@+id/recipeDetailsFragment"
+        android:name="com.example.myproduct.ui.recipe_details.RecipeDetailsFragment"
+        android:label="Recipe Details"
+        tools:layout="@layout/fragment_recipe_details">
+    <argument
+        android:name="recipe"
+        app:argType="com.example.myproduct.model.Recipe" />
+</fragment>
 </navigation>

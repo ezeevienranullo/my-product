@@ -54,4 +54,5 @@ dependencies {
     annotationProcessor(libs.glide.compiler)
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.navigation.ui.ktx)
+    implementation(libs.viewpager2)
 }

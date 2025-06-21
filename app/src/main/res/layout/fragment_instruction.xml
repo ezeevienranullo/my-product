@@ -7,15 +7,8 @@
     android:orientation="vertical"
     tools:context=".ui.recipe.RecipeFragment">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcRecipes"
+        android:id="@+id/rcInstructions"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="50dip" />
+        android:layout_height="match_parent" />
 </LinearLayout>
